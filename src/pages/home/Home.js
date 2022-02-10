@@ -1,5 +1,7 @@
-function Home(props) {
-  return <div>Home Page</div>;
+import Topbar from "../../components/topbar/Topbar";
+
+function Home() {
+  return <Topbar />;
 }
 
 export default Home;
