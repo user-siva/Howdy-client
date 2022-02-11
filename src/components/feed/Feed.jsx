@@ -1,9 +1,14 @@
 import "./feed.css"
+import Share from "../share/Share"
+import Post from "../post/Post"
 
-function Feed(props) {
+function Feed() {
     return (
         <div className="feed">
-           Feedbar 
+           <div className="feedWrapper">
+               <Share />
+               <Post />
+           </div>
         </div>
     );
 }
