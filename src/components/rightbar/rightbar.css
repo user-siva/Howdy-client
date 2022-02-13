@@ -37,36 +37,3 @@
   margin: 0;
   list-style: none;
 }
-
-.onlineFrd {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.rightbarImgContainer {
-  margin-right: 10px;
-  position: relative;
-}
-
-.rightbarProfile {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.rightbarOnline {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: limegreen;
-  position: relative;
-  top: -2px;
-  right: 0;
-  border: 2px solid white;
-}
-
-.rightbarUsername {
-  font-weight: 500;
-}

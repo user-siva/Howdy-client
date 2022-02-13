@@ -10,6 +10,8 @@ import {
     Event,
     School,
   } from "@mui/icons-material";
+import {Users} from "../../dummyData"
+import CloseFriends from "../closeFriends/CloseFriends";
 
 function Sidebar() {
     return (
@@ -56,42 +58,9 @@ function Sidebar() {
                <button className="sidebarBtn">Show more..</button>
                <hr className="sidebarHr" />
                <ul className="sidebarFriendList">
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
-                   <li className="sidebarFriend">
-                       <img className="sidebarFriendImg" src="/assets/users/2.jpg" alt="" />
-                       <span className="sidebarFriendName">Siva</span>
-                   </li>
+                   {Users.map((u) => (
+                       <CloseFriends key={u.id} user={u} />
+                   ))}
                </ul>
            </div>
         </div>
