@@ -2,10 +2,11 @@ import "./rightbar.css"
 import Online from "../online/Online"
 import {Users} from "../../dummyData"
 
-function Rightbar() {
-    return (
-        <div className="rightbar">
-            <div className="rightbarWrapper">
+function Rightbar({profile}) {
+
+    const HomeRightbar = () => {
+        return (
+            <>
                 <div className="birthdayContainer">
                     <img src="assets/gift.png" alt="" className="birthdayImg" />
                     <span className="birthdayText"><b>Hattori</b> have birthday today</span>
@@ -17,6 +18,59 @@ function Rightbar() {
                         <Online key={u.id} user={u} />
                     ))}
                 </ul>
+            </>
+        )
+    }
+
+    const ProfileRightbar = () => {
+        return (
+            <>
+            <h4 className="rightbarTitle">User Information:</h4>
+            <div className="rightbarInfo">
+                <div className="rightbarInfoItem">
+                    <span className="rightbarKey">City:</span>
+                    <span className="rightbarValue">TamilNadu</span>
+                </div>
+                <div className="rightbarInfoItem">
+                    <span className="rightbarKey">From:</span>
+                    <span className="rightbarValue">Tirunelveli</span>
+                </div>
+                <div className="rightbarInfoItem">
+                    <span className="rightbarKey">Relationship:</span>
+                    <span className="rightbarValue">Morattu Single</span>
+                </div>
+            </div>
+            <h4 className="rightbarTitle">User Information:</h4>
+            <div className="rightbarFollowings">
+                <div className="rightbarFollowing">
+                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">Robert Downey</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">Robert Downey</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">Robert Downey</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">Robert Downey</span>
+                </div>
+                <div className="rightbarFollowing">
+                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">Robert Downey</span>
+                </div>
+            </div>
+            </>
+        )
+    }
+
+    return (
+        <div className="rightbar">
+            <div className="rightbarWrapper">
+               <ProfileRightbar />
             </div>
         </div>
     );
