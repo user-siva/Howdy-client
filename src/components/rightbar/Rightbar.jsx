@@ -3,15 +3,16 @@ import Online from "../online/Online"
 import {Users} from "../../dummyData"
 
 function Rightbar({profile}) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
     const HomeRightbar = () => {
         return (
             <>
                 <div className="birthdayContainer">
-                    <img src="assets/gift.png" alt="" className="birthdayImg" />
+                    <img src={`${PF}gift.png`} alt="" className="birthdayImg" />
                     <span className="birthdayText"><b>Hattori</b> have birthday today</span>
                 </div>
-                <img src="assets/ad.png" alt="" className="rightbarAd" />
+                <img src={`${PF}ad.png`} alt="" className="rightbarAd" />
                 <h4 className="rightbarTitle">Online Friends</h4>
                 <ul className="onlineFrdList">
                     {Users.map((u) => (
@@ -43,23 +44,23 @@ function Rightbar({profile}) {
             <h4 className="rightbarTitle">User Information:</h4>
             <div className="rightbarFollowings">
                 <div className="rightbarFollowing">
-                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Robert Downey</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Robert Downey</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Robert Downey</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Robert Downey</span>
                 </div>
                 <div className="rightbarFollowing">
-                    <img src="assets/users/1.jpg" alt="" className="rightbarFollowingImg" />
+                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
                     <span className="rightbarFollowingName">Robert Downey</span>
                 </div>
             </div>
