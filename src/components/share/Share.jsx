@@ -1,5 +1,5 @@
 import "./share.css"
-import { PermMedia,Label,Room,EmojiEmotions } from "@mui/icons-material"
+import { PermMedia,Label,Room,EmojiEmotions,Cancel } from "@mui/icons-material"
 import { AuthContext } from "../../context/AuthContext"
 import {useContext,useRef,useState} from "react"
 import axios from "axios"
@@ -40,10 +40,16 @@ function Share(props) {
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img src={user.profilePicture ? PF+user.profilePicture : PF = "users/noAvatar.png"} alt="" className="shareProfile" />
+                    <img src={user.profilePicture ? PF+user.profilePicture : PF + "users/noAvatar.png"} alt="" className="shareProfile" />
                     <input placeholder={"What's on your mind,"+user.username+"?"} ref={desc} className="shareInput" />
                 </div>
                 <hr className="shareHr" />
+                {file && (
+                    <div className="shareImgContainer">
+                        <img src={URL.createObjectURL(file)} alt="" className="shareImg" />
+                        <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+                    </div>
+                )}
                 <form className="shareBottom" onSubmit={submitHandler} encType="multipart/form-data">
                     <div className="shareOptions">
                         <label htmlFor="file" className="shareOption">
