@@ -1,9 +1,48 @@
 import "./rightbar.css"
 import Online from "../online/Online"
 import {Users} from "../../dummyData"
+import {useEffect,useState} from "react"
+import { Link } from "react-router-dom"
+import { AuthContext } from "../../context/AuthContext";
+import {Add,Remove} from "@mui/icons-material"
+import axios from "axios"
+import { useContext } from "react"
 
 function Rightbar({user}) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
+    const [friends,setFriends] = useState([])
+    const {user:currentUser,dispatch} = useContext(AuthContext)
+    const [followed,setFollowed] = useState(currentUser.followings.includes(user?.id))
+
+    useEffect(() => {
+        const getFrds = async () => {
+          try{
+            const frdlist = await axios.get("/users/friends/"+ user._id)
+            console.log(frdlist.data)
+            setFriends(frdlist.data)
+          }catch(err){
+              console.error(err);
+          }
+        }
+        getFrds()
+    },[user])
+
+    const handleClick = async () => {
+        try {
+            if(followed){
+                await axios.put("/users/"+user._id+"/unfollow",{userId:currentUser._id})
+                dispatch({type:"UNFOLLOW",payload:user._id})
+            }else{
+                await axios.put("/users/"+user._id+"/follow",{userId:currentUser._id})
+                dispatch({type:"FOLLOW",payload:user._id})
+            }
+
+        }catch(err) {
+            console.error(err);
+        }
+        setFollowed(!followed)
+    }
+
 
     const HomeRightbar = () => {
         return (
@@ -26,6 +65,12 @@ function Rightbar({user}) {
     const ProfileRightbar = () => {
         return (
             <>
+            {user.username !== currentUser.username && (
+                <button className="rightbarFollowBtn" onClick={handleClick}>
+                    {followed ? "Unfollow" : "Follow"}
+                    {followed ? <Remove /> : <Add />}
+                </button>
+            )}
             <h4 className="rightbarTitle">User Information:</h4>
             <div className="rightbarInfo">
                 <div className="rightbarInfoItem">
@@ -45,26 +90,16 @@ function Rightbar({user}) {
             </div>
             <h4 className="rightbarTitle">User Friends:</h4>
             <div className="rightbarFollowings">
-                <div className="rightbarFollowing">
-                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">Robert Downey</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">Robert Downey</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">Robert Downey</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">Robert Downey</span>
-                </div>
-                <div className="rightbarFollowing">
-                    <img src={ `${PF}users/1.jpg`} alt="" className="rightbarFollowingImg" />
-                    <span className="rightbarFollowingName">Robert Downey</span>
-                </div>
+                {friends.map((frd) => (
+                    <>
+                    <Link to={"/profile/"+frd.username} style={{textDecoration:"none"}}>
+                    <div className="rightbarFollowing">
+                    <img src={frd.profilePicture ? PF+frd.profilePicture : PF+"users/noAvatar.png"} alt="" className="rightbarFollowingImg" />
+                    <span className="rightbarFollowingName">{frd.username}</span>
+                    </div>
+                    </Link>
+                    </>
+                ))}
             </div>
             </>
         )
