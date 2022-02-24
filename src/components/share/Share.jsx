@@ -32,6 +32,7 @@ function Share(props) {
 
         try{
             await axios.post("/post",newPost)
+            window.location.reload()
         }catch(error){}
     }
 

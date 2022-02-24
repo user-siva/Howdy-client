@@ -28,8 +28,8 @@ function Profile() {
         <div className="profileRight">
             <div className="profileRightTop">
               <div className="profileCover">
-                <img src={user.coverPicture || PF+"users/noCover.png"} alt="" className="profileCoverImg"/>
-                <img src={PF+user.profilePicture || PF+"users/noAvatar.png"} alt="" className="profileImg"/>
+                <img src={user.coverPicture ? PF+user.coverPicture : PF+"users/noCover.png"} alt="" className="profileCoverImg"/>
+                <img src={user.profilePicture ? PF+user.profilePicture : PF+"users/noAvatar.png"} alt="" className="profileImg"/>
               </div>
               <div className="profileInfo">
                   <h4 className="ProfileName">{user.username}</h4>
