@@ -24,9 +24,9 @@ function Login() {
                 </div>
                 <div className="loginRight">
                     <form className="loginBox" onSubmit={handleClick}>                       
-                        <input type="text" placeholder="Email" type="email" className="loginInput" ref={email} required />
-                        <input type="text" placeholder="Password" type="password" className="loginInput" ref={password} minLength="6" required />
-                        <button className="loginButton" disabled={isFetching}>
+                        <input placeholder="Email" type="email" className="loginInput" ref={email} required />
+                        <input placeholder="Password" type="password" className="loginInput" ref={password} minLength="6" required />
+                        <button className="loginButton" type="submit" disabled={isFetching}>
                             {isFetching ? "Loading..." : "Login"}
                         </button>
                         <span className="loginForget">Forget Password?</span>

@@ -21,7 +21,7 @@ function Rightbar({user}) {
             console.log(frdlist.data)
             setFriends(frdlist.data)
           }catch(err){
-              console.error(err);
+              console.log(err);
           }
         }
         getFrds()
@@ -38,7 +38,7 @@ function Rightbar({user}) {
             }
 
         }catch(err) {
-            console.error(err);
+            console.log(err);
         }
         setFollowed(!followed)
     }
