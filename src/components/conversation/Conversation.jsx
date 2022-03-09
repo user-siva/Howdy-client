@@ -11,14 +11,14 @@ function Conversation({ conversation, currentUser }) {
 
         const getUser = async () => {
             try {
-                const res = await axios("/users?userId=" + FrdId)
+                const res = await axios.get("/users?userId=" + FrdId)
                 setUser(res.data)
             } catch (err) {
                 console.log(err)
             }
         }
         getUser()
-    }, [currentUser, conversation, user])
+    }, [currentUser, conversation])
 
     return (
         <div className="conversation">
